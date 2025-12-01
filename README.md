@@ -12,16 +12,46 @@ A Windows desktop application for managing customer data with Excel file process
 
 ## Requirements
 
-- .NET 8.0 or later
+- .NET 8.0 SDK or later ([Download here](https://dotnet.microsoft.com/download))
 - Windows OS
-- Visual Studio 2022 or later (for development)
+- Visual Studio 2022 or later (optional, for development)
 
 ## Installation
+
+### Option 1: Using .NET CLI (Without Visual Studio)
+
+1. Install .NET 8.0 SDK from [dotnet.microsoft.com](https://dotnet.microsoft.com/download)
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/mkarim1378/rfm-system.git
+   cd rfm-system
+   ```
+3. Restore NuGet packages:
+   ```bash
+   dotnet restore
+   ```
+4. Build the project:
+   ```bash
+   dotnet build --configuration Release
+   ```
+5. Run the application:
+   ```bash
+   dotnet run --project RFMSystem/RFMSystem.csproj --configuration Release
+   ```
+
+### Option 2: Using Visual Studio
 
 1. Clone the repository
 2. Open `RFMSystem.sln` in Visual Studio
 3. Restore NuGet packages
 4. Build and run the project
+
+### Quick Run Scripts
+
+You can use the provided batch scripts:
+- `build.bat` - Build the project in Release mode
+- `run.bat` - Build and run the application
+- `publish.bat` - Create a standalone executable
 
 ## Usage
 
