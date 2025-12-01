@@ -181,12 +181,15 @@ namespace RFMSystem
                 {
                     HideLoadingIndicator();
                     DisplayExcelTable();
-                    _db.LogAction("excel_file_uploaded", new Dictionary<string, object>
+                    if (_excelData != null)
                     {
-                        ["file_path"] = filePath,
-                        ["rows"] = _excelData.Rows.Count,
-                        ["columns"] = _excelData.Columns.Count
-                    });
+                        _db.LogAction("excel_file_uploaded", new Dictionary<string, object>
+                        {
+                            ["file_path"] = filePath,
+                            ["rows"] = _excelData.Rows.Count,
+                            ["columns"] = _excelData.Columns.Count
+                        });
+                    }
                 });
             }
             catch (Exception ex)
@@ -354,10 +357,11 @@ namespace RFMSystem
                 GridLinesVisibility = DataGridGridLinesVisibility.All,
                 BorderBrush = new SolidColorBrush(Color.FromRgb(224, 224, 224)),
                 BorderThickness = new Thickness(1),
-                Margin = new Thickness(10),
-                ScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                ScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto
+                Margin = new Thickness(10)
             };
+            
+            ScrollViewer.SetHorizontalScrollBarVisibility(dataGrid, ScrollBarVisibility.Auto);
+            ScrollViewer.SetVerticalScrollBarVisibility(dataGrid, ScrollBarVisibility.Auto);
 
             foreach (var col in visibleColumns)
             {
